@@ -35,12 +35,10 @@ public class factionButtonScript : MonoBehaviour {
 
 		GameObject theDeck = GameObject.Find(factionName);
 		FactionScript factionscript = theDeck.GetComponent<FactionScript> ();
-		factionscript.AddToDeck();
-		factionName = "";
+        factionscript.AddToDeck(factionName);
+        //factionscript.AddToDeck();
 
-
-
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {

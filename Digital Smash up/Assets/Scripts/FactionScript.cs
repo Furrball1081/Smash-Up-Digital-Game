@@ -4,10 +4,10 @@ using System;
 using System.Collections.Generic;
 
 public class FactionScript : MonoBehaviour {
-	public float deckNum = 20f;
+    Player player;
+    public float deckNum = 20f;
 	public List<GameObject> Cards;
 	public string factionName;
-
 	
 	// Use this for initialization
 	void Start () {
@@ -17,17 +17,25 @@ public class FactionScript : MonoBehaviour {
 	}
 
 
-	public void AddToDeck(){
-	
-		foreach (Transform child in transform) {
-			if (child.tag == ("Card")) {
-				Cards.Add(child.gameObject);
-			}
-		}
-	}
+    public void AddToDeck(string afactionName) {
+        factionName = afactionName;
+        foreach (Transform child in transform)
+        {
+            if (child.tag == ("Card"))
+            {
+                Cards.Add(child.gameObject);
+            }
+        }
+        GameObject player = GameObject.Find("PlayerOne");
+        Player playerscript = player.GetComponent<Player>();
+        playerscript.passToPlayer(Cards);
+        
+    }
 
-	// Update is called once per frame
-	void Update () {
+
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 }
