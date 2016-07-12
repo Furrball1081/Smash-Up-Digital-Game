@@ -11,6 +11,8 @@ public class Player : MonoBehaviour {
     public List<GameObject> deckOne;
     public List<GameObject> deckTwo;
     public List<GameObject> mainDeck;
+    public List<GameObject> hand;
+    public List<GameObject> discard;
     public int playerVP = 0;
     // Use this for initialization
     void Start () {
@@ -102,8 +104,16 @@ public class Player : MonoBehaviour {
                 mainDeck[randomIndex] = temp;
             }
         }
+        drawStartingHand();
     }
-
+    public void drawStartingHand()
+    {
+        for (int i= 0; i<5; i++)
+        {
+            GameObject temp = mainDeck[i];
+            hand.Add(temp);
+        }
+    }
     void Update () {
 	
 	}
